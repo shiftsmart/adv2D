@@ -22,18 +22,21 @@ public class controller : MonoBehaviour
 
     #region 事件:程式入口
 
-    void Start() {
+    void Start()
+    {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
 
     }
-    private void Update() {
+    private void Update()
+    {
 
         jumpkey();
         PlayerCtl();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         JumpForce();
         Move();
     }
@@ -41,7 +44,8 @@ public class controller : MonoBehaviour
     #endregion
 
     #region 功能:實作該系統的複雜方法
-    private void PlayerCtl() {
+    private void PlayerCtl()
+    {
 
         bool upkey = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow);
         moveRightLeft = 0;
@@ -84,7 +88,8 @@ public class controller : MonoBehaviour
 
     }
 
-    private void JumpForce() {
+    private void JumpForce()
+    {
 
         if (clickjump)
         {
@@ -98,7 +103,8 @@ public class controller : MonoBehaviour
 
         }
     }
-    void Jump() {
+    void Jump()
+    {
         if (!isGround) { return; }
         // body.velocity = new Vector2(body.velocity.x,jumpheight); 舊的跳/20220620
 
@@ -108,17 +114,19 @@ public class controller : MonoBehaviour
         /// anim.SetTrigger("Jump");
 
     }
-    private void jumpkey() {
+    private void jumpkey()
+    {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             clickjump = true;
-            print("aaa");
+            // print("aaa");
         }
     }
 
 
-    private void Move() {
+    private void Move()
+    {
         if (Moving)
         {
             body.velocity = new Vector2(moveRightLeft * speed * Time.deltaTime, body.velocity.y);
@@ -129,27 +137,31 @@ public class controller : MonoBehaviour
 
     }
 
-    void durction(int i) {
+    void durction(int i)
+    {
         transform.eulerAngles = new Vector3(0, 180 * i, 0);
 
 
     }
 
-    void StatMachine() {
+    void StatMachine()
+    {
 
         anim.SetBool("Ground", isGround);
 
         anim.SetFloat("Y", body.velocity.y);
     }
 
-    private void OnCollisionStay2D(Collision2D collision) {
+    private void OnCollisionStay2D(Collision2D collision)
+    {
 
 
         isGround = true;
 
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnCollisionExit2D(Collision2D collision)
+    {
         isGround = false;
 
     }
