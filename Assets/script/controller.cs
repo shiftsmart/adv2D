@@ -37,8 +37,9 @@ public class controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        JumpForce();
         Move();
+        JumpForce();
+
     }
 
     #endregion
