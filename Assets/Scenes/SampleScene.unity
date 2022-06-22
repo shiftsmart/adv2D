@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 130385226}
   - component: {fileID: 130385228}
   - component: {fileID: 130385229}
+  - component: {fileID: 130385230}
   m_Layer: 3
   m_Name: KENSHI_IDEL
   m_TagString: Untagged
@@ -315,7 +316,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &130385227
 Animator:
   serializedVersion: 4
@@ -374,7 +375,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d56d4c4171bd124a91ada2293ff3c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 169
+  speed: 500
+  jumpheight: 5
+  body: {fileID: 130385226}
+  anim: {fileID: 130385227}
+  isGround: 0
+--- !u!114 &130385230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130385223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1dc9476a3af283459f8bcf35ee2fef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 500
   jumpheight: 5
   body: {fileID: 130385226}
   anim: {fileID: 130385227}
@@ -1101,7 +1119,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770962, y: 1}
+    m_SensorSize: {x: 1.9236726, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -15,71 +15,60 @@ public class controller : MonoBehaviour
     public Animator anim;
     [SerializeField, Header("是否在地板上")]
     public bool isGround = false;
-    private bool clickjump;
-    private bool Moving;
-    private int moveRightLeft = 0;
+    public AnimatorStateInfo state;
+
     #endregion
 
     #region 事件:程式入口
 
-    void Start()
-    {
+    void Start() {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
 
     }
-    private void Update()
-    {
+    private void Update() {
         PlayerCtl();
-        jumpkey();
 
     }
 
-    private void FixedUpdate()
-    {
-        JumpForce();
-        Move();
-
-
-    }
 
     #endregion
 
     #region 功能:實作該系統的複雜方法
-    private void PlayerCtl()
-    {
+
+
+    //玩家控制器
+    public virtual void PlayerCtl() {
 
         bool upkey = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow);
-        moveRightLeft = 0;
+
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Moving = true;
-            moveRightLeft = 1;
-            //  Move(1);
+
+            Move(1);
             durction(1);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Moving = true;
-            moveRightLeft = -1;
-            //  Move(-1);
+
+            Move(-1);
             durction(0);
         }
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            clickjump = true;
-            moveRightLeft = 0;
+            Jump();
+
         }
 
         if (upkey)
         {
-            moveRightLeft = 0;
-            print(upkey);
-            print("moveRightLeft：" + moveRightLeft);
+
+            Move(0);
+
         }
 
         StatMachine();
@@ -91,80 +80,59 @@ public class controller : MonoBehaviour
 
     }
 
-    private void JumpForce()
-    {
-
-        if (clickjump)
-        {
-            if (!isGround) { return; }
-             body.velocity = new Vector2(body.velocity.x,jumpheight);// 舊的跳/20220620
-
-            //body.AddForce(new Vector2(0, jumpheight));
-            anim.SetBool("Jump2", true);
-            clickjump = false;
-        }
-    }
-
-
-    void Jump()
-    {
+    void Jump() {
         if (!isGround) { return; }
-        // body.velocity = new Vector2(body.velocity.x,jumpheight); 舊的跳/20220620
+        body.velocity = new Vector2(body.velocity.x, jumpheight);// 舊的跳/20220620
 
-        body.AddForce(new Vector2(0, jumpheight));
+        //  body.AddForce(new Vector2(0, jumpheight));
 
         anim.SetBool("Jump2", true);
         /// anim.SetTrigger("Jump");
 
     }
-    private void jumpkey()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            clickjump = true;
-            // print("aaa");
-        }
-    }
 
 
-    private void Move()
-    {
-        if (Moving)
-        {
-            body.velocity = new Vector2(moveRightLeft * speed * Time.deltaTime, body.velocity.y);
-            print("MOVE：" + Mathf.Abs(moveRightLeft));
-            anim.SetFloat("MOVE", Mathf.Abs(moveRightLeft));
-            Moving = false;
-        }
+
+    public virtual void Move(int i) {
+
+      //  body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
+
+        anim.SetFloat("MOVE", Mathf.Abs(i));
+        print(Mathf.Abs(i));
+
 
     }
 
-    void durction(int i)
-    {
+
+    void durction(int i) {
         transform.eulerAngles = new Vector3(0, 180 * i, 0);
 
 
     }
 
-    void StatMachine()
-    {
+    /// <summary>
+    /// 控制動畫
+    /// </summary>
+    void StatMachine() {
 
         anim.SetBool("Ground", isGround);
 
         anim.SetFloat("Y", body.velocity.y);
-    }
+        state = anim.GetCurrentAnimatorStateInfo(0);//0是動畫layer的index
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
+    }
+    /// <summary>
+    /// 控制碰撞
+    /// </summary>
+
+    private void OnCollisionStay2D(Collision2D collision) {
 
 
         isGround = true;
 
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
+    private void OnCollisionExit2D(Collision2D collision) {
         isGround = false;
 
     }
