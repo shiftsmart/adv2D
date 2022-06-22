@@ -30,15 +30,16 @@ public class controller : MonoBehaviour
     }
     private void Update()
     {
-
-        jumpkey();
         PlayerCtl();
+        jumpkey();
+
     }
 
     private void FixedUpdate()
     {
-        Move();
         JumpForce();
+        Move();
+
 
     }
 
@@ -71,13 +72,14 @@ public class controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             clickjump = true;
-
+            moveRightLeft = 0;
         }
 
         if (upkey)
         {
             moveRightLeft = 0;
-
+            print(upkey);
+            print("moveRightLeft¡G" + moveRightLeft);
         }
 
         StatMachine();
@@ -95,15 +97,15 @@ public class controller : MonoBehaviour
         if (clickjump)
         {
             if (!isGround) { return; }
-            // body.velocity = new Vector2(body.velocity.x,jumpheight); ÂÂªº¸õ/20220620
+             body.velocity = new Vector2(body.velocity.x,jumpheight);// ÂÂªº¸õ/20220620
 
-            body.AddForce(new Vector2(0, jumpheight));
+            //body.AddForce(new Vector2(0, jumpheight));
             anim.SetBool("Jump2", true);
             clickjump = false;
-
-
         }
     }
+
+
     void Jump()
     {
         if (!isGround) { return; }
@@ -131,7 +133,7 @@ public class controller : MonoBehaviour
         if (Moving)
         {
             body.velocity = new Vector2(moveRightLeft * speed * Time.deltaTime, body.velocity.y);
-
+            print("MOVE¡G" + Mathf.Abs(moveRightLeft));
             anim.SetFloat("MOVE", Mathf.Abs(moveRightLeft));
             Moving = false;
         }
