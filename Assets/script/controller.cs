@@ -17,6 +17,11 @@ public class controller : MonoBehaviour
     public bool isGround = false;
     public AnimatorStateInfo state;
 
+    [SerializeField, Header("攻擊判定物件")]
+    public Collider2D hitbox;
+    public GameObject hiteffect;
+
+
     #endregion
 
     #region 事件:程式入口
@@ -95,7 +100,7 @@ public class controller : MonoBehaviour
 
     public virtual void Move(int i) {
 
-      //  body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
+        body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
 
         anim.SetFloat("MOVE", Mathf.Abs(i));
         print(Mathf.Abs(i));
