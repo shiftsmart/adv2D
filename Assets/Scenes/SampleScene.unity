@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 500
-  jumpheight: 5
+  jumpheight: 6
   body: {fileID: 130385226}
   anim: {fileID: 130385227}
   isGround: 0
