@@ -20,6 +20,12 @@ public class controller : MonoBehaviour
     [SerializeField, Header("§ðÀ»§P©wª«¥ó")]
     public Collider2D hitbox;
     public GameObject hiteffect;
+    
+    
+    public float DashSpeed;
+    public float DashTime;
+    public float StartDashTime;
+    public int direction;
 
 
     #endregion
@@ -29,7 +35,7 @@ public class controller : MonoBehaviour
     void Start() {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
-
+        DashTime = StartDashTime;
     }
     private void Update() {
         PlayerCtl();
