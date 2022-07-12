@@ -27,23 +27,21 @@ public class TEST : MonoBehaviour
     }
     private void move()
     {
-        if (Faceleft)
-        {
-            rb.velocity = new Vector2(-Speed, rb.velocity.x);
-            if (transform.position.x < leftx)
+       
+            rb.velocity = new Vector2(Speed, rb.velocity.x);
+            if (rb.transform.position.x < leftx)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                rb.velocity = new Vector2(Speed, -1);
+             
                 Faceleft = false;
             }
-        }
-        else
-        {
-            rb.velocity = new Vector2(Speed, rb.velocity.x);
-            if (transform.position.x > rightx)
+      
+           // rb.velocity = new Vector2(Speed, rb.velocity.x);
+            if (rb.transform.position.x > rightx)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                rb.velocity = new Vector2(Speed, 1);
                 Faceleft = true;
             }
-        }
+      
     }
 }
