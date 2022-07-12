@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
+  - kenshi
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - player
   - Water
   - UI
-  - 
-  - 
+  - Monster
+  - NPC
   - 
   - 
   - 
@@ -43,4 +45,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: NPC
+    uniqueID: 2137697777
     locked: 0

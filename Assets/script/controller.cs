@@ -16,26 +16,32 @@ public class controller : MonoBehaviour
     [SerializeField, Header("是否在地板上")]
     public bool isGround = false;
     public AnimatorStateInfo state;
+    public ParticleSystem dust;
+    //[SerializeField, Header("攻擊判定物件")]
+    //public Collider2D hitbox;
+    //public GameObject hiteffect;
 
-    [SerializeField, Header("攻擊判定物件")]
-    public Collider2D hitbox;
-    public GameObject hiteffect;
-    
-    
-    public float DashSpeed;
-    public float DashTime;
-    public float StartDashTime;
-    public int direction;
 
+    //public float DashSpeed;
+    //public float DashTime;
+    //public float StartDashTime;
+    //public int direction;
+    private void Awake() {
+
+        //Physics2D.IgnoreLayerCollision(6,7);
+        body = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
+
+
+    }
 
     #endregion
 
     #region 事件:程式入口
 
     void Start() {
-        body = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        DashTime = StartDashTime;
+
+        //DashTime = StartDashTime;
     }
     private void Update() {
         PlayerCtl();
@@ -69,7 +75,9 @@ public class controller : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
         {
             Jump();
 
@@ -93,6 +101,7 @@ public class controller : MonoBehaviour
 
     void Jump() {
         if (!isGround) { return; }
+        CreatDust();
         body.velocity = new Vector2(body.velocity.x, jumpheight);// 舊的跳/20220620
 
         //  body.AddForce(new Vector2(0, jumpheight));
@@ -116,6 +125,8 @@ public class controller : MonoBehaviour
 
 
     void durction(int i) {
+
+
         transform.eulerAngles = new Vector3(0, 180 * i, 0);
 
 
@@ -149,6 +160,10 @@ public class controller : MonoBehaviour
     }
     #endregion
 
+    void CreatDust() {
+        dust.Play();
 
+
+    }
 
 }
