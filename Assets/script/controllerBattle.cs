@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class controllerBattle : controller
 {
 
@@ -18,21 +19,32 @@ public class controllerBattle : controller
     private float dashingCooldown = 0.5f;
 
     [SerializeField] private TrailRenderer tr;
-
+    [SerializeField]
+    private Game gg;
 
     public override void PlayerCtl() {
+      
         if (isDashing)
         {
             return;
         }
         base.PlayerCtl();
+        if (state.IsName("Base.hurt")) { return; }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (!isGround) { body.AddForce(new Vector2(0, 65)); }
-         
-                body.velocity = new Vector2(0, body.velocity.y);
-                anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
-        
+            if (!isGround)
+            {
+
+                body.velocity = new Vector2(0, 1);
+                //body.AddForce(new Vector2(0, 65)); 
+
+            }
+            //  body.velocity = new Vector2(0, 4);
+            // body.velocity = new Vector2(0, 10);
+            body.velocity = new Vector2(0, body.velocity.y);
+
+            anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
+
         }
 
 
@@ -107,7 +119,7 @@ public class controllerBattle : controller
         #endregion
     }
     public override void Move(int i) {
-       // print(CanMove());
+        // print(CanMove());
         if (!CanMove())
         {
             body.velocity = new Vector2(i * speed, body.velocity.y);
@@ -135,8 +147,14 @@ public class controllerBattle : controller
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+ 
+    
 
-
-
+    public   void Damage(float dmg) {
+        if (state.IsName("Base.hurt")) { return; }
+        anim.SetTrigger("hurt");
+          gg.sav.Damage(dmg);
+    
+    }
 
 }

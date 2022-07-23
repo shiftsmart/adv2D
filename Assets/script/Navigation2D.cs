@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Navigation2D : MonoBehaviour
 {
+    [SerializeField]
     float speed = 23;
     [SerializeField] float stoppingDistance = 0.05f;
     private Vector3 targetPos;

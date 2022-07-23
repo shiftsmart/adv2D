@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DamageSystem : MonoBehaviour
 {
-    private float dmg = 1.0f;
+    public float dmg = 1.0f;
+    [SerializeField]
     private TargetType type = TargetType.Enemy;
 
 
@@ -13,13 +14,15 @@ public class DamageSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         switch(type) {
             case 0:
-                if (collision.gameObject.layer==11) {  }
+                if (collision.gameObject.layer==6) {
+                    collision.GetComponent<Enemy>().Damage(dmg);
+                }
                 break;
 
             case (TargetType)1:
-                if (collision.gameObject.layer == 9)
+                if (collision.gameObject.layer == 3)
                 {
-
+                    collision.GetComponent<controllerBattle>().Damage(dmg);
                 }
                 break;
 

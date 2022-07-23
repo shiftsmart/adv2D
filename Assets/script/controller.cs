@@ -28,7 +28,8 @@ public class controller : MonoBehaviour
     //public int direction;
     private void Awake() {
 
-        //Physics2D.IgnoreLayerCollision(6,7);
+         Physics2D.IgnoreLayerCollision(3,6, true);//©¿²¤¹Ï¼h
+        Physics2D.IgnoreLayerCollision(3, 7, true);//©¿²¤¹Ï¼h
         body = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
 
@@ -44,7 +45,9 @@ public class controller : MonoBehaviour
         //DashTime = StartDashTime;
     }
     private void Update() {
-        PlayerCtl();
+
+    
+            PlayerCtl();
 
     }
 
