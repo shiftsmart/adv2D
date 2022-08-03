@@ -65,14 +65,16 @@ public class controller : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
+            if (state.IsName("Base.UPATK")) { return; }
+            if (state.IsName("Base.downATK")) { return; }
             Move(1);
             durction(1);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-
+            if (state.IsName("Base.UPATK")) { return; }
+            if (state.IsName("Base.downATK")) { return; }
             Move(-1);
             durction(0);
         }
@@ -80,8 +82,10 @@ public class controller : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
+            if (state.IsName("Base.UPATK")) { return; }
+            if (state.IsName("Base.downATK")) { return; }
             Jump();
 
         }
@@ -118,8 +122,8 @@ public class controller : MonoBehaviour
 
     public virtual void Move(int i) {
 
-        body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
-
+      body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
+      //  body.velocity = Vector2.Lerp   (i * speed * Time.deltaTime, body.velocity.y,1f);
         anim.SetFloat("MOVE", Mathf.Abs(i));
         print(Mathf.Abs(i));
 

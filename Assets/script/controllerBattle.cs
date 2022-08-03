@@ -23,7 +23,7 @@ public class controllerBattle : controller
     private Game gg;
 
     public override void PlayerCtl() {
-      
+
         if (isDashing)
         {
             return;
@@ -41,13 +41,24 @@ public class controllerBattle : controller
             }
             //  body.velocity = new Vector2(0, 4);
             // body.velocity = new Vector2(0, 10);
-            body.velocity = new Vector2(0, body.velocity.y);
+            //   body.velocity = new Vector2(0, body.velocity.y);
 
             anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
 
         }
+        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.UpArrow))
+        {
+            if (!isGround) { return; }
+            anim.SetTrigger("UPATK");
+            body.velocity = new Vector2(0, 6);
+        }
 
-
+        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow))
+        {
+            if (state.IsName("Base.UPATK")) { return; }
+            anim.SetTrigger("DOWNATK");
+            body.velocity = new Vector2(0, -6);
+        }
         //·sdash
         if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.RightArrow))
         {
@@ -147,14 +158,14 @@ public class controllerBattle : controller
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
- 
-    
 
-    public   void Damage(float dmg) {
+
+
+    public void Damage(float dmg) {
         if (state.IsName("Base.hurt")) { return; }
         anim.SetTrigger("hurt");
-          gg.sav.Damage(dmg);
-    
+        gg.sav.Damage(dmg);
+
     }
 
 }

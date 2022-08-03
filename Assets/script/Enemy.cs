@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Start() {
-        StartCoroutine("SearchTimer");
+        StartCoroutine(SearchTimer());
     }
 
 
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    IEnumerator SearchTimer() {
+    public  IEnumerator SearchTimer() {
         while (true)
         {
 
@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
     ///// <summary>
     ///// 檢查是否碰到地板
     ///// </summary>
-    private void CheckGround() {
+    public void CheckGround() {
         Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundOffset, v3CheckGroundSize, 0, layerCheckGround);
         //   print("碰到的物件:" + hit.name);
 
@@ -91,8 +91,8 @@ public class Enemy : MonoBehaviour
 
     }
     public virtual void Damage(float dmg) {
-      
 
+        hp -= dmg;
     }
     public void Die() {
 

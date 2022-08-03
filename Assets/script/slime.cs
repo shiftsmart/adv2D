@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class slime : Enemy
@@ -7,7 +8,7 @@ public class slime : Enemy
     //  [SerializeField, Header("≠Ë≈È±±®Ó")]
     // public Rigidbody2D body;
     public GameObject effect, effect2;
-
+    private bool air = false;
     private void OnTriggerEnter2D(Collider2D other) {
         // body = GetComponent<Rigidbody2D>();
         if (other.CompareTag("Player"))
@@ -16,21 +17,48 @@ public class slime : Enemy
             //   nav.enabled = false;
             GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
             //  GameObject g2 = Instantiate(effect2, transform.position , Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0)
-            GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity );
+            GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
             // g2.transform.localScale = new Vector3(2, 2, 0);
             g2.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
-            // body.velocity = new Vector2(0, 6);
-            body.velocity = new Vector2(2, 4);
-            // body.AddForce(new Vector2(0, 200));
+            // body.velocity = new Vector2(3, 0);
+            if (!isGround)
+                body.velocity = new Vector2(0, 2);
 
+        }
+        if (other.CompareTag("UPPlayer"))
+        {
+            air = true;
+            nav.enabled = false;
+            GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
+            GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
+            g2.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
+            body.velocity = new Vector2(0, 6);
+            StopCoroutine(SearchTimer());
+        }
+
+        if (other.CompareTag("DPlayer"))
+        {
+            //   nav.enabled = false;
+            GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
+            GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
+            g2.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
+            body.velocity = new Vector2(0, -6);
             //    StopCoroutine("SearchPlayer");
         }
+
     }
 
 
     private void Update() {
-
-        StateMachine();
+     
+            if (isGround&&(air==false))
+            {
+            nav.enabled = true;
+        }
+        if (isGround) {
+            air = true;
+        }
+          StateMachine();
         if (target != null)
         {
             nav.follow(target);
@@ -48,7 +76,7 @@ public class slime : Enemy
 
 
     public override void Damage(float dmg) {
-        hp -= dmg;
+        base.Damage(dmg);
         if (!this.enabled) { return; };
 
         if (hp <= 0)
@@ -57,5 +85,12 @@ public class slime : Enemy
             Destroy(nav);
             this.enabled = false;
         }
+    }
+
+    IEnumerator WaitGround() {
+
+        yield return new WaitForSeconds(1);
+        nav.enabled = true;
+
     }
 }

@@ -19,6 +19,7 @@ public class Navigation2D : MonoBehaviour
 
         float moveSpeed = Time.fixedDeltaTime * speed * Mathf.Sign(targetPos.x - transform.position.x);
         body.velocity = new Vector2((moving == true ? moveSpeed : 0), 0);
+       // body.velocity = Vector3.Lerp(body.transform.position, targetPos, 0.1f*(moving == true ? moveSpeed : 0));
 
         if (body.velocity.x != 0)
         {
