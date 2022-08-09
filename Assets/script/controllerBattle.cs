@@ -133,7 +133,8 @@ public class controllerBattle : controller
         // print(CanMove());
         if (!CanMove())
         {
-            body.velocity = new Vector2(i * speed, body.velocity.y);
+            //body.velocity = new Vector2(i * speed, body.velocity.y);
+            body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0)*speed, 0.1f * 0.2f); ///new0804
         }
         anim.SetFloat("MOVE", Mathf.Abs(i));
 
@@ -145,6 +146,8 @@ public class controllerBattle : controller
     }
 
     private IEnumerator Dash(int i) {
+
+        Physics2D.IgnoreLayerCollision(3, 3, true);//©¿²¤¹Ï¼h
         canDash = false;
         isDashing = true;
         float originalGravity = body.gravityScale;
@@ -157,9 +160,15 @@ public class controllerBattle : controller
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        StartCoroutine(DashTime());
     }
 
+    IEnumerator DashTime() {
 
+        yield return new WaitForSeconds(0.6f);
+
+        Physics2D.IgnoreLayerCollision(3, 3, false);//©¿²¤¹Ï¼h
+    }
 
     public void Damage(float dmg) {
         if (state.IsName("Base.hurt")) { return; }

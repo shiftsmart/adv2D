@@ -73,10 +73,10 @@ public class Enemy : MonoBehaviour
     ///// </summary>
     public void CheckGround() {
         Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundOffset, v3CheckGroundSize, 0, layerCheckGround);
-        //   print("碰到的物件:" + hit.name);
+         //print("碰到的物件:" + hit.name);
 
         isGround = hit;
-        print(isGround);
+       print(isGround);
     }
 
     public void OnDrawGizmosSelected() {

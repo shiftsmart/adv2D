@@ -5,12 +5,12 @@ using UnityEngine;
 public class Navigation2D : MonoBehaviour
 {
     [SerializeField]
-    float speed = 23;
+    public float speed = 23;
     [SerializeField] float stoppingDistance = 0.05f;
-    private Vector3 targetPos;
+    public Vector3 targetPos;
     [SerializeField] private Rigidbody2D body;
     public bool moving = false;
-
+    public Vector2 v2;
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
 
@@ -18,8 +18,12 @@ public class Navigation2D : MonoBehaviour
     private void FixedUpdate() {
 
         float moveSpeed = Time.fixedDeltaTime * speed * Mathf.Sign(targetPos.x - transform.position.x);
-        body.velocity = new Vector2((moving == true ? moveSpeed : 0), 0);
-       // body.velocity = Vector3.Lerp(body.transform.position, targetPos, 0.1f*(moving == true ? moveSpeed : 0));
+        //body.velocity = new Vector2((moving == true ? moveSpeed : 0), 0);
+        v2 = new Vector2((moving == true ? moveSpeed : 0), 0);
+        body.velocity = Vector2.Lerp(v2, targetPos, (moving == true ? 0.1f : 0));
+        //print(moving);
+        //print( v2);
+       // print(targetPos);
 
         if (body.velocity.x != 0)
         {
@@ -50,7 +54,7 @@ public class Navigation2D : MonoBehaviour
 
     }
     public void follow(Transform tar) {
-            targetPos = tar.position;
+        targetPos = tar.position;
         if (!ReachGoal())
         {
 

@@ -28,7 +28,7 @@ public class controller : MonoBehaviour
     //public int direction;
     private void Awake() {
 
-         Physics2D.IgnoreLayerCollision(3,6, true);//©¿²¤¹Ï¼h
+        Physics2D.IgnoreLayerCollision(3, 6, true);//©¿²¤¹Ï¼h
         Physics2D.IgnoreLayerCollision(3, 7, true);//©¿²¤¹Ï¼h
         body = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
@@ -46,8 +46,8 @@ public class controller : MonoBehaviour
     }
     private void Update() {
 
-    
-            PlayerCtl();
+
+        PlayerCtl();
 
     }
 
@@ -82,7 +82,7 @@ public class controller : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) )
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (state.IsName("Base.UPATK")) { return; }
             if (state.IsName("Base.downATK")) { return; }
@@ -122,8 +122,8 @@ public class controller : MonoBehaviour
 
     public virtual void Move(int i) {
 
-      body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
-      //  body.velocity = Vector2.Lerp   (i * speed * Time.deltaTime, body.velocity.y,1f);
+        //  body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
+        body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0), 0.1f * 0.2f); ///new0804
         anim.SetFloat("MOVE", Mathf.Abs(i));
         print(Mathf.Abs(i));
 
