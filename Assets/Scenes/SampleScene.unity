@@ -3392,13 +3392,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0766fbe3918e16d4db6f64ecd5d5f412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 20
   atk: 1
   isGround: 0
   body: {fileID: 1367153042}
   anim: {fileID: 0}
   nav: {fileID: 0}
-  detcetRange: {x: 2.59, y: 0.01}
+  detcetRange: {x: 2.71, y: -0.72}
+  detcetRange2: {x: 10, y: 5}
   target: {fileID: 0}
   v3CheckGroundSize: {x: 0.31, y: 0.04, z: 1}
   v3CheckGroundOffset: {x: -0.02, y: 0.01, z: 0}
@@ -3487,7 +3488,8 @@ MonoBehaviour:
   body: {fileID: 1494721070}
   anim: {fileID: 0}
   nav: {fileID: 0}
-  detcetRange: {x: 1.41, y: 0}
+  detcetRange: {x: 1.41, y: -2.53}
+  detcetRange2: {x: 10, y: 5}
   target: {fileID: 0}
   v3CheckGroundSize: {x: 0.31, y: 0.04, z: 1}
   v3CheckGroundOffset: {x: -0.02, y: 0.01, z: 0}

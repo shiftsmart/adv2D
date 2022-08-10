@@ -25,7 +25,7 @@ public class slime : Enemy
             //this.GetComponent<Navigation2D>().targetPos = new Vector2(-3000, 300);
             //this.GetComponent<Navigation2D>().v2 = new Vector2(-3000, 300);
 
-            print(this.GetComponent<Navigation2D>().v2);
+            //print(this.GetComponent<Navigation2D>().v2);
 
 
             if (!isGround)

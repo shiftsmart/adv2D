@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public Navigation2D nav;
     public Vector2 detcetRange = new Vector2(10, 5);
-
+    public Vector2 detcetRange2 = new Vector2(10, 5);
     public Transform target;
     float searchInterval = 1;
 

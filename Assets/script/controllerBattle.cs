@@ -133,8 +133,8 @@ public class controllerBattle : controller
         // print(CanMove());
         if (!CanMove())
         {
-            //body.velocity = new Vector2(i * speed, body.velocity.y);
-            body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0)*speed, 0.1f * 0.2f); ///new0804
+            body.velocity = new Vector2(i * speed, body.velocity.y);
+            //body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0)*speed, 0.1f * 0.2f); ///new0804
         }
         anim.SetFloat("MOVE", Mathf.Abs(i));
 
@@ -165,7 +165,7 @@ public class controllerBattle : controller
 
     IEnumerator DashTime() {
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
 
         Physics2D.IgnoreLayerCollision(3, 3, false);//©¿²¤¹Ï¼h
     }
