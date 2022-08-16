@@ -28,107 +28,118 @@ public class controllerBattle : controller
         {
             return;
         }
-        base.PlayerCtl();
-        if (state.IsName("Base.hurt")) { return; }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if (!isGround)
-            {
 
-                body.velocity = new Vector2(0, 1);
-                //body.AddForce(new Vector2(0, 65)); 
+        base.PlayerCtl();
+        if (!state.IsName("Base.hurt"))
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if (!isGround)
+                {
+
+                    body.velocity = new Vector2(0, 1);
+                    //body.AddForce(new Vector2(0, 65)); 
+
+                }
+                //  body.velocity = new Vector2(0, 4);
+                // body.velocity = new Vector2(0, 10);
+                //   body.velocity = new Vector2(0, body.velocity.y);
+
+                anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
 
             }
-            //  body.velocity = new Vector2(0, 4);
-            // body.velocity = new Vector2(0, 10);
-            //   body.velocity = new Vector2(0, body.velocity.y);
+            if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.UpArrow))
+            {
+                if (!isGround) { return; }
+                if (state.IsName("Base.hurt")) { return; }
+                anim.SetTrigger("UPATK");
+                body.velocity = new Vector2(0, 6);
+            }
 
-            anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
+            if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow))
+            {
+                if (state.IsName("Base.UPATK")) { return; }
+                anim.SetTrigger("DOWNATK");
+                body.velocity = new Vector2(0, -6);
+            }
+            //·sdash
+            if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.RightArrow))
+            {
+                StartCoroutine(Dash(1));
 
+            }
+            if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.LeftArrow))
+            {
+                StartCoroutine(Dash(-1));
+
+            }
+            #region   ÂÂdash
+            //if (timeBtwSpawns <= 0)
+            //{
+            //    Instantiate(echo, transform.position, Quaternion.identity);
+            //    timeBtwSpawns = startTimeBtwSpawns;
+            //}
+            //else
+            //{
+            //    timeBtwSpawns -= Time.deltaTime;
+            //}
+
+            //if (direction == 0)
+            //{
+
+
+            //    if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.LeftArrow))
+            //    {
+
+
+
+            //        direction = 1;
+
+            //    }
+            //    else if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.RightArrow))
+            //    {
+
+            //        direction = 2;
+
+            //    }
+            //}
+            //else
+            //{
+
+            //    if (DashTime <= 0)
+            //    {
+            //        direction = 0;
+            //        DashTime = StartDashTime;
+            //        body.velocity = Vector2.zero;
+
+
+            //    }
+            //    else
+            //    {
+            //        DashTime -= Time.deltaTime;
+
+            //        if (direction == 1)
+            //        {
+            //            body.velocity = Vector2.left * DashSpeed;
+            //        }
+            //        else if (direction == 2)
+            //        {
+            //            body.velocity = Vector2.right * DashSpeed;
+            //        }
+
+            //    }
+            //}
+
+            #endregion
+
+
+            if (Input.GetKeyDown(KeyCode.X)) {
+
+                Time.timeScale = 0.2f;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.UpArrow))
-        {
-            if (!isGround) { return; }
-            anim.SetTrigger("UPATK");
-            body.velocity = new Vector2(0, 6);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow))
-        {
-            if (state.IsName("Base.UPATK")) { return; }
-            anim.SetTrigger("DOWNATK");
-            body.velocity = new Vector2(0, -6);
-        }
-        //·sdash
-        if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.RightArrow))
-        {
-            StartCoroutine(Dash(1));
-
-        }
-        if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.LeftArrow))
-        {
-            StartCoroutine(Dash(-1));
-
-        }
-        #region   ÂÂdash
-        //if (timeBtwSpawns <= 0)
-        //{
-        //    Instantiate(echo, transform.position, Quaternion.identity);
-        //    timeBtwSpawns = startTimeBtwSpawns;
-        //}
-        //else
-        //{
-        //    timeBtwSpawns -= Time.deltaTime;
-        //}
-
-        //if (direction == 0)
-        //{
-
-
-        //    if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.LeftArrow))
-        //    {
-
-
-
-        //        direction = 1;
-
-        //    }
-        //    else if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.RightArrow))
-        //    {
-
-        //        direction = 2;
-
-        //    }
-        //}
-        //else
-        //{
-
-        //    if (DashTime <= 0)
-        //    {
-        //        direction = 0;
-        //        DashTime = StartDashTime;
-        //        body.velocity = Vector2.zero;
-
-
-        //    }
-        //    else
-        //    {
-        //        DashTime -= Time.deltaTime;
-
-        //        if (direction == 1)
-        //        {
-        //            body.velocity = Vector2.left * DashSpeed;
-        //        }
-        //        else if (direction == 2)
-        //        {
-        //            body.velocity = Vector2.right * DashSpeed;
-        //        }
-
-        //    }
-        //}
-
-        #endregion
     }
+
     public override void Move(int i) {
         // print(CanMove());
         if (!CanMove())

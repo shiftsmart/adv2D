@@ -29,10 +29,12 @@ public class Enemy : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         nav = GetComponent<Navigation2D>();
         anim = GetComponentInChildren<Animator>();
+  
     }
 
     private void Start() {
         StartCoroutine(SearchTimer());
+       
     }
 
 

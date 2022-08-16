@@ -15,6 +15,7 @@ public class controller : MonoBehaviour
     public Animator anim;
     [SerializeField, Header("是否在地板上")]
     public bool isGround = false;
+ 
     public AnimatorStateInfo state;
     public ParticleSystem dust;
     //[SerializeField, Header("攻擊判定物件")]
@@ -45,10 +46,11 @@ public class controller : MonoBehaviour
         //DashTime = StartDashTime;
     }
     private void Update() {
-
-
-        PlayerCtl();
-
+      
+        print("state.IsName" + state.IsName("Base.hurt"));
+    
+            PlayerCtl();
+      
     }
 
 
@@ -62,46 +64,49 @@ public class controller : MonoBehaviour
 
         bool upkey = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow);
 
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!state.IsName("Base.hurt"))
         {
-            if (state.IsName("Base.UPATK")) { return; }
-            if (state.IsName("Base.downATK")) { return; }
-            Move(1);
-            durction(1);
-        }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                if (state.IsName("Base.UPATK")) { return; }
+                if (state.IsName("Base.downATK")) { return; }
+                Move(1);
+                durction(1);
+            }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (state.IsName("Base.UPATK")) { return; }
-            if (state.IsName("Base.downATK")) { return; }
-            Move(-1);
-            durction(0);
-        }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (state.IsName("Base.UPATK")) { return; }
+                if (state.IsName("Base.downATK")) { return; }
+                Move(-1);
+                durction(0);
+            }
 
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (state.IsName("Base.UPATK")) { return; }
-            if (state.IsName("Base.downATK")) { return; }
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (state.IsName("Base.UPATK")) { return; }
+                if (state.IsName("Base.downATK")) { return; }
+                Jump();
 
-        }
+            }
 
-        if (upkey)
-        {
+            if (upkey)
+            {
 
-            Move(0);
+                Move(0);
 
-        }
-
-        StatMachine();
-        if (body.velocity.y < -0.07)
+            }
+      if (body.velocity.y < -0.07)
         {
             anim.SetBool("Jump2", false);
         }
+
+        }
+        StatMachine();
+  
 
 
     }
