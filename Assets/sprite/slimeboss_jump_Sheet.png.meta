@@ -1,0 +1,408 @@
+fileFormatVersion: 2
+guid: db6d1bc0c1d1f2248961f0c856496cc3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 677
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84c7cb633a9d54419388e970613e19c
+      internalID: -404450902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 677
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89d761e8ae043648ba06bf4e7afed34
+      internalID: -2015375467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 677
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5827ed8869fbae545b9f0776ca7d006d
+      internalID: 937132778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 677
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dde940315182a2488391afa812cdbe7
+      internalID: 1090047831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 458
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e9a02413e1bfe4d8546c7749c9ef01
+      internalID: 1587824864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 458
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78665562c93205f4faaee496a014d753
+      internalID: 1250694062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 458
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90af5108b827898418ee1ba328151f59
+      internalID: -1356361287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 458
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23461fe731528de428b09a9a39260b5c
+      internalID: 1748825096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 239
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13baf1557b175ce4cba5a3c4943de11d
+      internalID: 1024373039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 239
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2238b81fbbcd67459050905a100af19
+      internalID: 1178408949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 239
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a54a4093aae6340a96c09b5d7f666c
+      internalID: -1244270074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 239
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b565a3e4765dfce4ab4be328b0f1453a
+      internalID: 1577394225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimeboss_jump_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 208
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5473958, y: 0.355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c639cac67e5a8504baff9f0eb046d926
+      internalID: 915713647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      slimeboss_jump_Sheet_12: 915713647
+      slimeboss_jump_Sheet_7: 1748825096
+      slimeboss_jump_Sheet_8: 1024373039
+      slimeboss_jump_Sheet_5: 1250694062
+      slimeboss_jump_Sheet_2: 937132778
+      slimeboss_jump_Sheet_11: 1577394225
+      slimeboss_jump_Sheet_3: 1090047831
+      slimeboss_jump_Sheet_4: 1587824864
+      slimeboss_jump_Sheet_0: -404450902
+      slimeboss_jump_Sheet_1: -2015375467
+      slimeboss_jump_Sheet_6: -1356361287
+      slimeboss_jump_Sheet_9: 1178408949
+      slimeboss_jump_Sheet_10: -1244270074
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

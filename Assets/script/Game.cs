@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -9,8 +11,9 @@ public class Game : MonoBehaviour
     private float time1;
     private int framecount;
     private float pollingTime = 1f;
-
-
+    public Image hp;
+    [Header("PauseUI")]
+    public GameObject PauseUI;
     //private void Update() {
     //    time1 += Time.deltaTime;
     //    framecount++;
@@ -26,14 +29,33 @@ public class Game : MonoBehaviour
     public SaveData sav = new SaveData();
     public bool pause = false;
 
+    private void Update() {
+        hp.fillAmount = sav.hp/50f;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause(pause ? false : true);
+
+
+        }
+
+        }
     public Transform Player() {
         return GameObject.FindWithTag("player").transform;
 
 
     }
+    public void NextGame(string ScenceName) {
+        SceneManager.LoadScene(ScenceName);
+    }
+    public void Pause(bool isPause) {
+        PauseUI.SetActive(isPause ? true : false);
 
+        FindObjectOfType<controllerBattle>().enabled = isPause ? false : true;
 
+        Time.timeScale = isPause ? 0 : 1;
+        pause = pause ? false : true;
+    }
 
 
 

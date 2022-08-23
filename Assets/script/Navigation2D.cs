@@ -9,8 +9,16 @@ public class Navigation2D : MonoBehaviour
     [SerializeField] float stoppingDistance = 0.05f;
     public Vector3 targetPos;
     [SerializeField] private Rigidbody2D body;
-    public bool moving = false;
+    internal bool moving = false;
     public Vector2 v2;
+
+    internal bool enableMove = true;
+
+    public delegate void MoveEvent();
+
+    public MoveEvent OnReach;
+
+
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
 
@@ -35,6 +43,12 @@ public class Navigation2D : MonoBehaviour
 
         if (ReachGoal())
         {
+
+            if (OnReach != null) {
+                OnReach();
+                OnReach = null;
+            }
+
             StopMove();
 
         }
@@ -53,6 +67,14 @@ public class Navigation2D : MonoBehaviour
         StartMove();
 
     }
+
+    public void FaceTo(int i) {
+        Vector3 angle = transform.eulerAngles;
+        angle.y = i==1 ? 0 : 180;
+
+        transform.eulerAngles = angle;
+    }
+
     public void follow(Transform tar) {
         targetPos = tar.position;
         if (!ReachGoal())

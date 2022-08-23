@@ -25,14 +25,14 @@ public class Enemy : MonoBehaviour
     private Color colorCheckGround = new Color(1, 0, 0.2f, 0.5f);
     [SerializeField, Header("檢查地板圖層")]
     private LayerMask layerCheckGround;
-    private void Awake() {
+    public virtual  void Awake() {
         body = GetComponent<Rigidbody2D>();
         nav = GetComponent<Navigation2D>();
         anim = GetComponentInChildren<Animator>();
   
     }
 
-    private void Start() {
+    public virtual void Start() {
         StartCoroutine(SearchTimer());
        
     }
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
-
+    public virtual void StateMachine() { }
     /// <summary>
     /// 控制碰撞
     /// </summary>

@@ -14,7 +14,7 @@ public class controllerBattle : controller
     //public GameObject echo;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 6f;
+    private float dashingPower = 10f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.5f;
 
@@ -22,14 +22,16 @@ public class controllerBattle : controller
     [SerializeField]
     private Game gg;
 
-    public override void PlayerCtl() {
 
+    public GameObject effect;
+    public override void PlayerCtl() {
+     base.PlayerCtl();
         if (isDashing)
         {
             return;
         }
 
-        base.PlayerCtl();
+   
         if (!state.IsName("Base.hurt"))
         {
             if (Input.GetKeyDown(KeyCode.Z))
@@ -42,7 +44,7 @@ public class controllerBattle : controller
 
                 }
                 //  body.velocity = new Vector2(0, 4);
-                // body.velocity = new Vector2(0, 10);
+                body.velocity = new Vector2(0, 0);
                 //   body.velocity = new Vector2(0, body.velocity.y);
 
                 anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
@@ -133,10 +135,10 @@ public class controllerBattle : controller
             #endregion
 
 
-            if (Input.GetKeyDown(KeyCode.X)) {
+            //if (Input.GetKeyDown(KeyCode.X)) {
 
-                Time.timeScale = 0.2f;
-            }
+            //    Time.timeScale = 0.2f; ©ñºC®É¶¡
+            //}
         }
     }
 
@@ -144,6 +146,7 @@ public class controllerBattle : controller
         // print(CanMove());
         if (!CanMove())
         {
+
             body.velocity = new Vector2(i * speed, body.velocity.y);
             //body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0)*speed, 0.1f * 0.2f); ///new0804
         }
@@ -182,10 +185,12 @@ public class controllerBattle : controller
     }
 
     public void Damage(float dmg) {
-        if (state.IsName("Base.hurt")) { return; }
+        if (state.IsName("Base.hurt")) { body.velocity= new Vector2(0, -2);  return; }
+        if (state.IsName("Base.UPATK")) { return; }
+        if (state.IsName("Base.downATK")) { return; }
         anim.SetTrigger("hurt");
         gg.sav.Damage(dmg);
-
+        GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
     }
 
 }

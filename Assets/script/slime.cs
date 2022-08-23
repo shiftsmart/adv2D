@@ -61,8 +61,12 @@ public class slime : Enemy
 
 
     private void Update() {
-       
 
+        if (body.velocity.x != 0)
+        {
+            transform.eulerAngles = new Vector3(0, (body.velocity.x > 0 ? 0 : 180), 0);
+
+        }
         if (isGround)
         {
             air = true;
@@ -79,10 +83,21 @@ public class slime : Enemy
 
     public void StateMachine() {
         anim.SetBool("moving", nav.moving);
-        anim.SetBool("attack", nav.ReachGoal() && target != null&&isGround==true);
+        anim.SetBool("attack", nav.ReachGoal() && target != null && isGround == true);
 
+        JumpAttack();
+     
     }
+    private void JumpAttack() {
 
+        float distanceFromPlayer = nav.targetPos.x - body.position.x;
+
+        if (isGround) {
+            body.velocity = new Vector2(distanceFromPlayer, 3);
+  
+        }
+    
+    }
 
     public override void Damage(float dmg) {
         base.Damage(dmg);

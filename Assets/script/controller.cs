@@ -64,8 +64,8 @@ public class controller : MonoBehaviour
 
         bool upkey = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow);
 
-        if (!state.IsName("Base.hurt"))
-        {
+        //if (!state.IsName("Base.hurt"))
+        //{
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 if (state.IsName("Base.UPATK")) { return; }
@@ -104,7 +104,7 @@ public class controller : MonoBehaviour
             anim.SetBool("Jump2", false);
         }
 
-        }
+        //}
         StatMachine();
   
 
@@ -127,8 +127,8 @@ public class controller : MonoBehaviour
 
     public virtual void Move(int i) {
 
-        //  body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
-        body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0), 0.1f * 0.2f); ///new0804
+         body.velocity = new Vector2(i * speed * Time.deltaTime, body.velocity.y);
+      //  body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0), 0.1f * 0.2f); ///new0804
         anim.SetFloat("MOVE", Mathf.Abs(i));
         print(Mathf.Abs(i));
 
