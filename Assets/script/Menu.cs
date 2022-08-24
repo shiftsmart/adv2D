@@ -20,9 +20,13 @@ public class Menu : MonoBehaviour
     }
 
     public void gotostage() {
-
-        SceneManager.LoadScene("Game");
+     
+        SceneManager.LoadScene("Intro");
 
     }
+    public void Quit() {
 
+        Application.Quit();
+
+    }
 }

@@ -25,13 +25,13 @@ public class controllerBattle : controller
 
     public GameObject effect;
     public override void PlayerCtl() {
-     base.PlayerCtl();
+
         if (isDashing)
         {
             return;
         }
+        base.PlayerCtl();
 
-   
         if (!state.IsName("Base.hurt"))
         {
             if (Input.GetKeyDown(KeyCode.Z))
@@ -148,7 +148,7 @@ public class controllerBattle : controller
         {
 
             body.velocity = new Vector2(i * speed, body.velocity.y);
-            //body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0)*speed, 0.1f * 0.2f); ///new0804
+            //body.velocity = Vector2.Lerp(body.velocity, new Vector2(i, 0) * speed, 0.1f * 0.2f); ///new0804
         }
         anim.SetFloat("MOVE", Mathf.Abs(i));
 
@@ -185,7 +185,7 @@ public class controllerBattle : controller
     }
 
     public void Damage(float dmg) {
-        if (state.IsName("Base.hurt")) { body.velocity= new Vector2(0, -2);  return; }
+        if (state.IsName("Base.hurt")) { body.velocity = new Vector2(0, -2); return; }
         if (state.IsName("Base.UPATK")) { return; }
         if (state.IsName("Base.downATK")) { return; }
         anim.SetTrigger("hurt");

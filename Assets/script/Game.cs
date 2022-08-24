@@ -25,13 +25,18 @@ public class Game : MonoBehaviour
     //        framecount = 0;
     //    }
     //}
-
+ 
     public SaveData sav = new SaveData();
     public bool pause = false;
-
+    private void Start() {
+ 
+    }
     private void Update() {
         hp.fillAmount = sav.hp/50f;
+        if (sav.hp<=0) {
+            SceneManager.LoadScene("Main");
 
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause(pause ? false : true);
@@ -46,6 +51,7 @@ public class Game : MonoBehaviour
 
     }
     public void NextGame(string ScenceName) {
+        Time.timeScale =   1;
         SceneManager.LoadScene(ScenceName);
     }
     public void Pause(bool isPause) {

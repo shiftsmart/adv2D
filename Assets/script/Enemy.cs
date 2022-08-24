@@ -7,6 +7,11 @@ public class Enemy : MonoBehaviour
     public float atk = 1;
     [SerializeField, Header("是否在地板上")]
     public bool isGround = false;
+    public AudioClip sound;
+
+    public AudioSource aud;
+
+
 
     [SerializeField] public Rigidbody2D body;
     [SerializeField, Header("動畫控制")]
@@ -29,7 +34,7 @@ public class Enemy : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         nav = GetComponent<Navigation2D>();
         anim = GetComponentInChildren<Animator>();
-  
+        aud = GetComponent<AudioSource>();
     }
 
     public virtual void Start() {

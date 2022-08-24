@@ -20,6 +20,7 @@ public class SlimeBoss : Enemy
 
         if (other.CompareTag("Player") || other.CompareTag("UPPlayer") || other.CompareTag("DPlayer"))
         {
+            aud.PlayOneShot(sound,  1.5f );
             Vector3 v3 = new Vector3(0, 0, 0.1f);
 
             GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
@@ -56,7 +57,12 @@ public class SlimeBoss : Enemy
         //    ShotSlime();
 
         //}
-
+        if (hp <= 0)
+        {
+            anim.SetTrigger("Die");
+            Destroy(nav);
+            this.enabled = false;
+        }
     }
     public override void StateMachine() {
         //    anim.SetBool("jump", nav.moving);
@@ -65,8 +71,8 @@ public class SlimeBoss : Enemy
 
 
     public void ShotSlime(int i) {
-        SlimeBullet = Instantiate(SlimeBullet, transform.position, Quaternion.identity);
-        SlimeBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(5 * i, 5);
+        GameObject SlimeBullet2 = Instantiate(SlimeBullet, transform.position, Quaternion.identity);
+        SlimeBullet2.GetComponent<Rigidbody2D>().velocity = new Vector2(3 * i, 5);
    //     GameObject s1 = Instantiate(SlimeBullet, SlimePoint.position, SlimePoint.rotation);
         //Vector3 angle = transform.eulerAngles;
         //angle.y = i == 1 ? 0 : 180;
@@ -97,6 +103,8 @@ public class SlimeBoss : Enemy
         yield return new WaitForSeconds(time);
         ShotSlime(right ? -1 : 1);
         anim.SetTrigger("jump");
+        yield return new WaitForSeconds(time*2.0F);
+        ShotSlime(right ? -1 : 1);
         yield return new WaitForSeconds(time * 8.0f);
         MoveTo(right ? 1 : 0);
         //body.velocity = new Vector2(distanceFromPlayer, 3);

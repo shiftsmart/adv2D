@@ -8,14 +8,15 @@ public class slime : Enemy
     //  [SerializeField, Header("≠Ë≈È±±®Ó")]
     // public Rigidbody2D body;
     public GameObject effect, effect2;
- 
+
     private bool air = false;
     private void OnTriggerEnter2D(Collider2D other) {
       
             // body = GetComponent<Rigidbody2D>();
             if (other.CompareTag("Player"))
             {
-                Vector3 v3 = new Vector3(0, 0, 0.1f);
+            aud.PlayOneShot(sound, 1.5f);
+            Vector3 v3 = new Vector3(0, 0, 0.1f);
                 //   nav.enabled = false;
                 GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
                 //  GameObject g2 = Instantiate(effect2, transform.position , Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0)
@@ -36,7 +37,8 @@ public class slime : Enemy
             }
             if (other.CompareTag("UPPlayer"))
             {
-                air = true;
+            aud.PlayOneShot(sound, 1.5f);
+            air = true;
                 nav.enabled = false;
                 GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
                 GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
@@ -48,7 +50,8 @@ public class slime : Enemy
 
             if (other.CompareTag("DPlayer"))
             {
-                nav.enabled = false;
+            aud.PlayOneShot(sound, 1.5f);
+            nav.enabled = false;
                 GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
                 GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
                 g2.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
@@ -86,7 +89,7 @@ public class slime : Enemy
         anim.SetBool("attack", nav.ReachGoal() && target != null && isGround == true);
 
         JumpAttack();
-     
+
     }
     private void JumpAttack() {
 
