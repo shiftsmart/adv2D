@@ -63,7 +63,7 @@ public class Navigation2D : MonoBehaviour
 
     }
     public void MoveTo(Vector3 p) {
-c        targetPos = p;
+        targetPos = p;
         StartMove();
 
     }
