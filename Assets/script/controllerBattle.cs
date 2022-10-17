@@ -26,10 +26,10 @@ public class controllerBattle : controller
     public GameObject effect;
     public override void PlayerCtl() {
 
-        if (isDashing)
+        if (!isDashing)
         {
-            return;
-        }
+      
+     
         base.PlayerCtl();
 
         if (!state.IsName("Base.hurt"))
@@ -53,25 +53,27 @@ public class controllerBattle : controller
             if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.UpArrow))
             {
                 if (!isGround) { return; }
-                if (state.IsName("Base.hurt")) { return; }
+                if (!state.IsName("Base.hurt")) {  
                 anim.SetTrigger("UPATK");
-                body.velocity = new Vector2(0, 6);
+               body.velocity = new Vector2(0, 6);}
             }
 
             if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow))
             {
-                if (state.IsName("Base.UPATK")) { return; }
+                if (!state.IsName("Base.UPATK")) {  
                 anim.SetTrigger("DOWNATK");
-                body.velocity = new Vector2(0, -6);
+                body.velocity = new Vector2(0, -6);}
             }
             //·sdash
             if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.RightArrow))
             {
+      
                 StartCoroutine(Dash(1));
 
             }
             if (Input.GetKeyDown(KeyCode.C) && canDash && Input.GetKey(KeyCode.LeftArrow))
             {
+            
                 StartCoroutine(Dash(-1));
 
             }
@@ -141,7 +143,7 @@ public class controllerBattle : controller
             //}
         }
     }
-
+           }
     public override void Move(int i) {
         // print(CanMove());
         if (!CanMove())
@@ -185,7 +187,12 @@ public class controllerBattle : controller
     }
 
     public void Damage(float dmg) {
-        if (state.IsName("Base.hurt")) { body.velocity = new Vector2(0, -2); return; }
+        if (state.IsName("Base.hurt")) { body.velocity = new Vector2(0, -2);
+            anim.SetFloat("MOVE",0);
+            anim.SetFloat("Y", 0);
+            anim.SetFloat("Attack", 0);
+
+            return; }
         if (state.IsName("Base.UPATK")) { return; }
         if (state.IsName("Base.downATK")) { return; }
         anim.SetTrigger("hurt");

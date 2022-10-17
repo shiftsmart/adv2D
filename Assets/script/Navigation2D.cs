@@ -10,7 +10,7 @@ public class Navigation2D : MonoBehaviour
     public Vector3 targetPos;
     [SerializeField] private Rigidbody2D body;
     internal bool moving = false;
-    public Vector2 v2;
+   // public Vector2 v2;
 
     internal bool enableMove = true;
 
@@ -26,9 +26,11 @@ public class Navigation2D : MonoBehaviour
     private void FixedUpdate() {
 
         float moveSpeed = Time.fixedDeltaTime * speed * Mathf.Sign(targetPos.x - transform.position.x);
-        //body.velocity = new Vector2((moving == true ? moveSpeed : 0), 0);
-        v2 = new Vector2((moving == true ? moveSpeed : 0), 0);
-        body.velocity = Vector2.Lerp(v2, targetPos, (moving == true ? 0.1f : 0));
+      body.velocity = new Vector2((moving == true ? moveSpeed : 0), 0);
+       // v2 = new Vector2((moving == true ? moveSpeed : 0), 0);
+      ///  body.velocity = Vector2.Lerp(v2, targetPos, (moving == true ? 0.1f : 0));
+
+
         //print(moving);
         //print( v2);
        // print(targetPos);
