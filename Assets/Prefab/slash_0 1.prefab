@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7031229805755663399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8128699, y: -3.57, z: 0.04}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,10 +121,13 @@ MonoBehaviour:
   hp: 5
   atk: 1
   isGround: 0
+  sound: {fileID: 0}
+  aud: {fileID: 0}
   body: {fileID: 0}
   anim: {fileID: 0}
   nav: {fileID: 0}
   detcetRange: {x: 10, y: 5}
+  detcetRange2: {x: 10, y: 5}
   target: {fileID: 0}
   v3CheckGroundSize: {x: 1, y: 1, z: 1}
   v3CheckGroundOffset: {x: 0, y: 0, z: 0}
@@ -132,5 +135,8 @@ MonoBehaviour:
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 0
+  pos1: {x: 0, y: 0, z: 0}
+  pos2: {x: 0, y: 0, z: 0}
+  waitTime: {x: 0, y: 0}
   effect: {fileID: 0}
   effect2: {fileID: 0}

@@ -133,7 +133,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 329f9f3e442894146a4f2ab5191616c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,6 +277,9 @@ MonoBehaviour:
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 1
+  pos1: {x: 0, y: 0, z: 0}
+  pos2: {x: 0, y: 0, z: 0}
+  waitTime: {x: 0, y: 0}
   effect: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
   effect2: {fileID: 7031229805755663399, guid: 337f48fb3f5c29543966bcb46340b145, type: 3}
 --- !u!82 &1168165086547276271
