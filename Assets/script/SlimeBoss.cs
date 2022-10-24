@@ -9,7 +9,7 @@ public class SlimeBoss : Enemy
     public Transform SlimePoint;
     public Transform[] locators;
     public GameObject SlimeBullet;
-
+    public GameObject WIN;
 
     public int CurrentPosition = 0;//²{¦b¦ì¸m
     public int atkCount = 0;
@@ -60,6 +60,7 @@ public class SlimeBoss : Enemy
         if (hp <= 0)
         {
             anim.SetTrigger("Die");
+            WIN.SetActive(true);
             Destroy(nav);
             this.enabled = false;
         }

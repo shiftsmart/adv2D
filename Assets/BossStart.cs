@@ -11,6 +11,7 @@ public class BossStart : MonoBehaviour
     public GameObject BGM;
     [Header("BOSSBGM")]
     public GameObject BOSSBGM;
+    public GameObject BOSSOping;
     private void OnTriggerEnter2D(Collider2D collision) {
 
 
@@ -20,7 +21,7 @@ public class BossStart : MonoBehaviour
             BOSSUU.SetActive(true);
             BGM.GetComponent<AudioSource>().Pause();
             BGM.SetActive(false);
-
+            BOSSOping.SetActive(true);
             BOSSBGM.SetActive(true);
         }
     }
