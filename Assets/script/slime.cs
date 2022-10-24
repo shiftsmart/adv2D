@@ -13,19 +13,20 @@ public class slime : Enemy
     public GameObject effect, effect2;
 
     private bool air = false;
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
 
         // body = GetComponent<Rigidbody2D>();
         if (other.CompareTag("Player"))
         {
             aud.PlayOneShot(sound, 1.5f);
             Vector3 v3 = new Vector3(0, 0, 0.1f);
-
+            CinemachineShake.Instance.ShakeCamera(5f, 0.1f);
             GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);//特效1
             GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);//特效2
             g2.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
-          //  nav.enabled = false;
-        //    body.velocity = new Vector2(1.5f, 0f);
+            //  nav.enabled = false;
+            //    body.velocity = new Vector2(1.5f, 0f);
             if (!isGround)
                 body.velocity = new Vector2(0, 2);
 
@@ -58,7 +59,8 @@ public class slime : Enemy
 
 
 
-    private void Update() {
+    private void Update()
+    {
 
         if (body.velocity.x != 0)
         {
@@ -79,15 +81,17 @@ public class slime : Enemy
 
 
 
-    public void StateMachine() {
+    public void StateMachine()
+    {
         anim.SetBool("moving", nav.moving);
 
         anim.SetBool("attack", nav.ReachGoal() && target != null && isGround == true);
         Wander();
-      //  JumpAttack();
+        //  JumpAttack();
 
     }
-    private void JumpAttack() {
+    private void JumpAttack()
+    {
 
         float distanceFromPlayer = nav.targetPos.x - body.position.x;
 
@@ -99,7 +103,8 @@ public class slime : Enemy
 
     }
 
-    public override void Damage(float dmg) {
+    public override void Damage(float dmg)
+    {
         base.Damage(dmg);
         if (!this.enabled) { return; };
 
@@ -111,7 +116,8 @@ public class slime : Enemy
         }
     }
 
-    IEnumerator WaitGround() {
+    IEnumerator WaitGround()
+    {
 
         yield return new WaitForSeconds(1);
         if (isGround)
@@ -121,7 +127,8 @@ public class slime : Enemy
     }
 
 
-    IEnumerator Wander() {
+    IEnumerator Wander()
+    {
         bool point1 = true;
         nav.MoveTo(pos1);
         while (true)

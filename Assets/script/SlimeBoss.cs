@@ -22,7 +22,7 @@ public class SlimeBoss : Enemy
         {
             aud.PlayOneShot(sound,  1.5f );
             Vector3 v3 = new Vector3(0, 0, 0.1f);
-
+            CinemachineShake.Instance.ShakeCamera(5f, 0.1f);
             GameObject g1 = Instantiate(effect, transform.position, Quaternion.identity);
 
             GameObject g2 = Instantiate(effect2, transform.position, Quaternion.identity);
