@@ -10,22 +10,19 @@ public class SlimeMA : MonoBehaviour
         if (collision.CompareTag("kenshi"))
         {
 
-            slma.SetActive(true);
+            slma.SetActive(true); 
+            StartCoroutine(Waitslma());
         }
     }
-    // Update is called once per frame
-    void Update() {
-
-            StartCoroutine(Waitslma());
 
 
-        }
+
     IEnumerator Waitslma() {
 
         yield return new WaitForSeconds(10.0f);
-            slma.SetActive(false);
-
-        }
+        slma.SetActive(false);
+        
+    }
 
 
 }

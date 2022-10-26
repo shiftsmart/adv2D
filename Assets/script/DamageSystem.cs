@@ -19,7 +19,7 @@ public class DamageSystem : MonoBehaviour
             switch (type)
             {
                 case 0:
-                    if (collision.gameObject.layer == 6)
+                    if (collision.gameObject.layer == 6|| collision.gameObject.layer == 7)
                     {
                         collision.GetComponent<Enemy>().Damage(dmg);
                         time = 0;

@@ -9,6 +9,8 @@ public class SlimeBoss : Enemy
     public Transform SlimePoint;
     public Transform[] locators;
     public GameObject SlimeBullet;
+    public GameObject SlimeHP1;
+    public GameObject SlimeBossG;
     public GameObject WIN;
 
     public int CurrentPosition = 0;//現在位置
@@ -34,7 +36,13 @@ public class SlimeBoss : Enemy
 
 
     }
+    public override void Awake() {
+        base.Awake();
 
+        //Physics2D.IgnoreCollision(SlimeBullet.GetComponent<BoxCollider2D>(), SlimeBossG.GetComponent<BoxCollider2D>());//忽略圖層
+        //Physics2D.IgnoreCollision(SlimeHP1.GetComponent<BoxCollider2D>(), SlimeBossG.GetComponent<BoxCollider2D>());//忽略圖層
+
+    }
     public override void Start() {
         StartCoroutine(BattleStart());
     }
@@ -73,7 +81,7 @@ public class SlimeBoss : Enemy
 
     public void ShotSlime(int i) {
         GameObject SlimeBullet2 = Instantiate(SlimeBullet, transform.position, Quaternion.identity);
-        SlimeBullet2.GetComponent<Rigidbody2D>().velocity = new Vector2(3 * i, 5);
+        SlimeBullet2.GetComponent<Rigidbody2D>().velocity = new Vector2(  i*Random.Range(1f,12f), 5);
    //     GameObject s1 = Instantiate(SlimeBullet, SlimePoint.position, SlimePoint.rotation);
         //Vector3 angle = transform.eulerAngles;
         //angle.y = i == 1 ? 0 : 180;
@@ -105,6 +113,16 @@ public class SlimeBoss : Enemy
         ShotSlime(right ? -1 : 1);
         anim.SetTrigger("jump");
         yield return new WaitForSeconds(time*2.0F);
+        ShotSlime(right ? -1 : 1);
+        yield return new WaitForSeconds(time * 2.5F);
+        ShotSlime(right ? -1 : 1);
+        yield return new WaitForSeconds(time * 3.0F);
+        ShotSlime(right ? -1 : 1);
+        yield return new WaitForSeconds(time * 3.5F);
+        ShotSlime(right ? -1 : 1);
+        yield return new WaitForSeconds(time * 4.0F);
+        ShotSlime(right ? -1 : 1);
+        yield return new WaitForSeconds(time * 4.5F);
         ShotSlime(right ? -1 : 1);
         yield return new WaitForSeconds(time * 8.0f);
         MoveTo(right ? 1 : 0);

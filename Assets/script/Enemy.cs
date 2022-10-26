@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     public Vector2 detcetRange2 = new Vector2(10, 5);
     public Transform target;
     float searchInterval = 1;
+    [SerializeField]
+    private Game gg2;
 
     [SerializeField, Header("檢查地板尺寸")]
     private Vector3 v3CheckGroundSize = Vector3.one;
@@ -30,7 +32,20 @@ public class Enemy : MonoBehaviour
     private Color colorCheckGround = new Color(1, 0, 0.2f, 0.5f);
     [SerializeField, Header("檢查地板圖層")]
     private LayerMask layerCheckGround;
-    public virtual  void Awake() {
+    public virtual void Awake() {
+
+        try
+        {
+
+            Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("SlimeBoss").GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>());//忽略圖層
+
+        }
+        catch (System.Exception)
+        {
+
+
+        }
+        gg2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Game>();
         body = GetComponent<Rigidbody2D>();
         nav = GetComponent<Navigation2D>();
         anim = GetComponentInChildren<Animator>();
@@ -39,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Start() {
         StartCoroutine(SearchTimer());
-       
+
     }
 
 
@@ -48,13 +63,13 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public  IEnumerator SearchTimer() {
+    public IEnumerator SearchTimer() {
         while (true)
         {
 
             yield return new WaitForSeconds(searchInterval);
 
-           
+
             SearchPlayer();
 
 
@@ -80,10 +95,10 @@ public class Enemy : MonoBehaviour
     ///// </summary>
     public void CheckGround() {
         Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundOffset, v3CheckGroundSize, 0, layerCheckGround);
-         //print("碰到的物件:" + hit.name);
+        //print("碰到的物件:" + hit.name);
 
         isGround = hit;
-       print(isGround);
+        print(isGround);
     }
 
     public void OnDrawGizmosSelected() {
@@ -102,8 +117,10 @@ public class Enemy : MonoBehaviour
         hp -= dmg;
     }
     public void Die() {
-
+        if (this.gameObject.layer == 6)
+            gg2.sav.KillPlus(1);
         Destroy(gameObject);
+
     }
     public virtual void StateMachine() { }
     /// <summary>

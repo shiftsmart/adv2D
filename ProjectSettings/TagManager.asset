@@ -9,6 +9,7 @@ TagManager:
   - UPPlayer
   - DPlayer
   - 1HPSlime
+  - SlimeBoss
   layers:
   - Default
   - TransparentFX

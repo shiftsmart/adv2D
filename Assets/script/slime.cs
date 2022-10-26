@@ -86,7 +86,7 @@ public class slime : Enemy
         anim.SetBool("moving", nav.moving);
 
         anim.SetBool("attack", nav.ReachGoal() && target != null && isGround == true);
-        Wander();
+       Wander();
         //  JumpAttack();
 
     }
